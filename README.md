@@ -10,4 +10,6 @@
 This is an open source project in which, A Website build using Python and Django which download youtubes videos or videos from any other website.
 we have used paffy library for downloading youtube videos and used web scraping technology for downloading video from other websites.
 
-<a href="./Code_of_Conduct.md"><h2 align= "center"><b> Code of Conduct</b></h2></a> 
+<a href="./Code_of_Conduct.md"><h2 align= "center"><b> Code of Conduct</b></h2></a>
+
+<a href="./CONTRIBUTING.md"><h2 align= "center"><b> Contribution Guidelines</b></h2></a>
