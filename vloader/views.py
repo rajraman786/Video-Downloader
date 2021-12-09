@@ -3,11 +3,11 @@ from django.http import HttpResponse
 import pafy
 import requests
 
-
 def index(request):
     return render(request, 'index.html')
 
 def analyze(request):
+  try:
     # fetching the text
     ftext = request.POST.get('text')
  
@@ -15,15 +15,12 @@ def analyze(request):
     # Check checkbox value
     yload = request.POST.get('yload', 'off')
     wload = request.POST.get('wload', 'off')
-
     #Check which checkbox is on
     if yload == "on":
         url = ftext
-    
         video = pafy.new(url)
         bestResolutionVideo = video.getbest()
         bestResolutionVideo.download()
-    
         
         return HttpResponse("done")
 
@@ -47,3 +44,7 @@ def analyze(request):
         
     else:
         return HttpResponse("Error")
+
+  
+  except Exception as e:
+    print(e)
