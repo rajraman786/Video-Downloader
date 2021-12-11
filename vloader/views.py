@@ -21,11 +21,10 @@ def analyze(request):
   try:
     # fetching the text
     ftext = request.POST.get('text')
- 
+    ftext = str(ftext)
 
-    # Check checkbox value
-    yload = request.POST.get('yload', 'off')
-    wload = request.POST.get('wload', 'off')
+    # boolean to tell whether the video is of youtube or not
+    isYtUrl = ftext.startswith("https://www.youtube.com/watch?v=")
 
     initWorkDir = os.getcwd()
     currDir = os.path.dirname(os.path.abspath(__file__))
@@ -34,8 +33,9 @@ def analyze(request):
       shutil.rmtree('downloadedFiles')
     os.mkdir('downloadedFiles')
     os.chdir('downloadedFiles')
+    
     #Check which checkbox is on
-    if yload == "on":
+    if isYtUrl:
         url = ftext
         video = pafy.new(url)
         bestResolutionVideo = video.getbest()
@@ -44,7 +44,7 @@ def analyze(request):
         os.chdir(initWorkDir)
         return response
 
-    elif(wload=="on"):
+    else:
       url = ftext
       myvideo = url.split("/")[-1] 
     
@@ -63,11 +63,7 @@ def analyze(request):
       #  params = {'purpose': 'Changed to Uppercase', 'analyzed_text': analyzed}
         # Analyze the text
       #  return render(request, 'analyze.html', params)
-        
-    else:
-        os.chdir(initWorkDir)
-        return HttpResponse("Error")
-
   
   except Exception as e:
     print(e)
+    return HttpResponse("Error")
