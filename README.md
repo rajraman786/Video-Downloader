@@ -98,8 +98,8 @@ SOFTWARE.
 
 ## Authors
 
-- [RAMAN RAJ](https://github.com/rajraman786)
-- [Sachin Mittal](https://github.com/SachinMittal1766)
+- [RAMAN RAJ](https://www.linkedin.com/in/rajraman786/)
+- [Sachin Mittal](https://www.linkedin.com/in/mittal-sachin/)
 
 
 
